@@ -17,7 +17,8 @@ for (let i = 0; i < botones.length; i++) {
     if (botones[i] === "1" || botones[i] === "2" || botones[i] === "3" || botones[i] === "4" || botones[i] === "5" || botones[i] === "6"
       || botones[i] === "7" || botones[i] === "8" || botones[i] === "9" || botones[i] === "0" || botones[i] === "-" || botones[i] === "+" || botones[i] === "/"|| botones[i] === "X"   || botones[i] === "=") {    
         console.log(boton.value);
-        input.value += boton.value;
+      input.value += boton.value;
+      
     } 
   });
 }
