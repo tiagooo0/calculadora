@@ -1,4 +1,4 @@
-const botones = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "C", "/", "*", "+", "-", "=", "(", ")"];
+const botones = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "C", "/", "*", "+", "-", "=", "(", ")",".",];
 let num1 = [];
 let num2 = [];
 let operacionIngresada = false; 
@@ -31,9 +31,10 @@ for (let i = 0; i < botones.length; i++) {
       case '/':
       case '*':
       case '+':
+      case ".":
       case '-':
         //es una expresión regular
-        if (ultimoBoton !== "" && ultimoBoton.match(/[\/ *+\-=]/)) {
+        if (ultimoBoton !== "" && ultimoBoton.match(/[\/ .*+\-=]/)) {
         
         } else {
           input.value += boton.value;
