@@ -1,41 +1,8 @@
-
-
-const botones = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "C", "/", "X", "+", "-", "="];
+const botones = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "C", "/", "*", "+", "-", "=", "(", ")"];
 let num1 = [];
 let num2 = [];
 let operacionIngresada = false; 
 let input = document.getElementById("result")
-
-
-/*
-for (let i = 0; i < botones.length; i++) {
-  const boton = document.getElementById(botones[i]);
-  boton.addEventListener("click", function () {
-    if (botones[i] === "C")
-    { input.value = "" }
-    
-    if (botones[i] === "1" || botones[i] === "2" || botones[i] === "3" || botones[i] === "4" || botones[i] === "5" || botones[i] === "6"
-      || botones[i] === "7" || botones[i] === "8" || botones[i] === "9" || botones[i] === "0" || botones[i] === "-" || botones[i] === "+" || botones[i] === "/"|| botones[i] === "X"   || botones[i] === "=") {    
-        console.log(boton.value);
-      input.value += boton.value;
-      
-    } 
-  });
-}
-for (let i = 0; i < botones.length; i++) {
-  const boton = document.getElementById(botones[i]);
-  boton.addEventListener("click", function () {
-    switch (botones[i]) {
-      case 'C':
-        input.value = ""
-      case '1'  || '2':
-        console.log(boton.value);
-        input.value += boton.value;
-        break
-    }
-  })
-}
-*/
 let ultimoBoton = "";
 
 for (let i = 0; i < botones.length; i++) {
@@ -59,20 +26,36 @@ for (let i = 0; i < botones.length; i++) {
         input.value += boton.value;
         console.log(boton.value);
         break;
+      case "(":
+      case ")":
       case '/':
-      case 'X':
+      case '*':
       case '+':
       case '-':
-      case '=':
-        if (ultimoBoton !== "" && ultimoBoton.match(/[\/X+\-=]/)) {
-          
+        //es una expresión regular
+        if (ultimoBoton !== "" && ultimoBoton.match(/[\/ *+\-=]/)) {
+        
         } else {
           input.value += boton.value;
-          
-          // Código para realizar operaciones matemáticas
-          console.log(boton.value);
+          // codigo para saber la operacion
+          let op;
+          switch (boton.value) {
+            case '*': op = 'multiplicacion'
+              break
+              case '+': op = 'suma'
+              break
+              case '-': op = 'resta'
+              break
+          case '/': op = 'division'
+          break
+        }
+          console.log(boton.value + '(' + op + ')' );
         }
         break;
+      case '=':
+        input.value = eval(input.value)
+        console.log("su resultado es = " + input.value)
+        break
       default:
         console.log("Botón no reconocido");
         break;
